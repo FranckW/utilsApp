@@ -22,14 +22,13 @@ public class GetPostItServlet extends GetPostHttpRequestServlet {
 		super.doRequest(request, response);
 		try {
 			Statement stmt = connection.createStatement();
-
 			ResultSet resultSet = stmt.executeQuery("SELECT * FROM POSTIT");
-			JSONObject jo = new JSONObject();
 			JSONArray ja = new JSONArray();
 			while (resultSet.next()) {
 				int id = resultSet.getInt("ID");
 				String title = resultSet.getString("TITLE");
 				String content = resultSet.getString("CONTENT");
+				JSONObject jo = new JSONObject();
 				jo.put("id", id);
 				jo.put("title", title);
 				jo.put("content", content);
@@ -42,7 +41,7 @@ public class GetPostItServlet extends GetPostHttpRequestServlet {
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {
-			out.write("Error while retrieving data from the database");
+			out.write("Error while retrieving data from the database. " + e.getMessage());
 		}
 		out.flush();
 	}

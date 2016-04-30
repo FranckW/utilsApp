@@ -1,13 +1,13 @@
 'use strict';
 angular
-        .module('colorApp', [
+        .module('utilsApp', [
             'ngRoute', 'ui.bootstrap'
         ])
         .config(function ($routeProvider) {
             $routeProvider
                     .when('/main', {
                         templateUrl: 'index.html',
-                        controller: 'MainCtrl'
+                        controller: 'PostItCtrl'
                     })
                     .otherwise({
                         redirectTo: '/main'

@@ -1,4 +1,4 @@
-angular.module('colorApp').directive("drag", ["$rootScope", function ($rootScope) {
+angular.module('utilsApp').directive("drag", ["$rootScope", function ($rootScope) {
 
         function dragStart(evt, element, dragStyle) {
             evt.dataTransfer = evt.originalEvent.dataTransfer;

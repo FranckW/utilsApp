@@ -4,27 +4,59 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Color buttons App</title>
-    <meta name="description" content="">
+    <title>Utils App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="app.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="container mainDiv" ng-controller="PostItCtrl">
-        <ul>
-            <li data-ng-repeat="postit in postits">{{ postit.title}}</li>
-        </ul>
+    <div class="container">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>                        
+                </button>
+                    <a class="navbar-brand" href="#">Utils App</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li id="todoNavBarLi" class="active"><a href="index.html" class="toggleTodo">To do</a></li>
+                        <li id="clochetteNavBarLi"><a href="index.html" class="toggleClochette">Clochette</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="content">
+            <div id="todoContent">
+                <div ng-controller="PostItCtrl">
+                    <h2>To do</h2>
+                    <table border="1">
+                        <tr ng-repeat="postit in postits">
+                            <td>{{postit.title}}</td>
+                            <td>{{postit.content}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="clochetteContent" class="hidden">
+                <h2>Clochette</h2>
+            </div>
+
+        </div>
     </div>
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="app.js"></script>
-    <script src="components/version/version.js"></script>
-    <script src="components/version/version-directive.js"></script>
-    <script src="components/version/interpolate-filter.js"></script>
+    <script src="components/scripts/controllers/navbarItemsToggle.js"></script>
     <script src="components/scripts/controllers/postItCtrl.js"></script>
 </body>
 

@@ -1,4 +1,4 @@
-angular.module('colorApp').directive("drop", ['$rootScope', function ($rootScope) {
+angular.module('utilsApp').directive("drop", ['$rootScope', function ($rootScope) {
 
         function dragEnter(evt, element, dropStyle) {
             evt.preventDefault();
