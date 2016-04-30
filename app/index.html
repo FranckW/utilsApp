@@ -1,54 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="colorApp">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Color buttons App</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="app.css">
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-        <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
-        <div class="bodyDiv container">
-            <div class="mainDiv col-xs-2">
-                <p class="bg-warning lead">Hexa color : #</p><input class="form-control" type="text" ng-model="couleur" ng-init="couleur = '5bc0de'">
-                <div class="btn btn-info space" style="background-color:#{{couleur}}">Couleur : {{couleur}}</div>
-            </div>
-            <div ng-controller="ButtonListCtrl" class="col-xs-4">
-                <table class="table table-striped table-bordered table-hover table-condensed">
-                    <tr>
-                        <th>Name</th>
-                        <th>Value</th>
-                        <th>Button</th>
-                    </tr>
-                    <tr data-ng-repeat="color in colorsData| filter:{name:elementNameOnlyTable}" drag="$index" dragStyle="rowDrag"
-                        drop="$index" dropStyle="rowDrop">
-                        <td>{{ color.name}}</td>
-                        <td>{{ color.value}}</td>
-                        <td><div class="btn btn-info" style="background-color:{{color.value}}">button</div>
-                    </tr>
-                </table>
-            </div>
-            <div ng-controller="DragNDropButtonCtrl" class="col-xs-6">
-                <div class="btn btn-primary space" ng-model="list1" ng-hide="!list1.title">{{list1.title}}</div>
-                <div class="thumbnail space" ng-model="label" style='height:50px;'>{{label}}
-                    <div class="btn btn-success" ng-model="list2" ng-hide="!list2">{{list2.title}}</div>
-                </div>
-            </div>
-        </div>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="app.js"></script>
-        <script src="components/version/version.js"></script>
-        <script src="components/version/version-directive.js"></script>
-        <script src="components/version/interpolate-filter.js"></script>
-        <script src="components/scripts/controllers/buttonListCtrl.js"></script>
-        <script src="components/scripts/controllers/dragNDropButtonCtrl.js"></script>
-        <script src="components/scripts/directives/dragDirective.js"></script>
-        <script src="components/scripts/directives/dropDirective.js"></script>
-        <script src="components/scripts/library/ntc.js"></script>
-    </body>
+<html lang="en" ng-app="utilsApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Color buttons App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <div class="container mainDiv" ng-controller="PostItCtrl">
+        <ul>
+            <li data-ng-repeat="postit in postits">{{ postit.title}}</li>
+        </ul>
+    </div>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="components/version/version.js"></script>
+    <script src="components/version/version-directive.js"></script>
+    <script src="components/version/interpolate-filter.js"></script>
+    <script src="components/scripts/controllers/postItCtrl.js"></script>
+</body>
+
 </html>
