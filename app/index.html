@@ -12,8 +12,10 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body spellcheck=false>
+
     <div class="container">
+
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -32,17 +34,22 @@
                 </div>
             </div>
         </nav>
+
         <div id="content">
-            <div id="todoContent">
-                <div ng-controller="PostItCtrl">
-                    <h2>To do</h2>
-                    <table border="1">
-                        <tr ng-repeat="postit in postits">
-                            <td>{{postit.title}}</td>
-                            <td>{{postit.content}}</td>
-                        </tr>
-                    </table>
-                </div>
+            <div id="todoContent" ng-controller="PostItCtrl">
+                <table>
+                    <tr ng-repeat="postit in postits">
+                        <td>
+                            <div class="quote-container">
+                                <i class="pin"></i>
+                                <blockquote class="note yellow">
+                                    <cite ng-model="postit.title" contenteditable></cite>
+                                    <div ng-model="postit.content" contenteditable></div>
+                                </blockquote>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
             </div>
 
             <div id="clochetteContent" class="hidden">
@@ -56,8 +63,9 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="app.js"></script>
-    <script src="components/scripts/controllers/navbarItemsToggle.js"></script>
     <script src="components/scripts/controllers/postItCtrl.js"></script>
+    <script src="components/scripts/controllers/navbarItemsToggle.js"></script>
+    <script src="components/scripts/js/editablePostIt.js"></script>
 </body>
 
 </html>
