@@ -22,12 +22,10 @@ angular.module('utilsApp').controller('PostItCtrl', ["$scope", "$rootScope", "$h
                 if (attr.id === "titleedit") {
                     $http.get('http://localhost:8080/jeeServer/updatePostItTitle?id='+ scope.ngModel.id + '&title=' + element.text()).success(function (data) {
                       });
-                   // alert("Titre : "  + element.text() +". Mon id est " + scope.ngModel.id);
                 }
                 else if (attr.id === "contentedit") {
                     $http.get('http://localhost:8080/jeeServer/updatePostItContent?id='+ scope.ngModel.id + '&content=' + element.text()).success(function (data) {
                       });
-                   // alert("Content : " + scope.ngModel.content +". Mon id est " + scope.ngModel.id);
                 }
                 scope.$apply();
                 return element;
