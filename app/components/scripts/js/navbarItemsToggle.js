@@ -20,5 +20,5 @@ $(function () {
         $("#todoNavBarLi").removeClass('active');
         $("#todoContent").addClass('hidden');
     });
-
+    
 });

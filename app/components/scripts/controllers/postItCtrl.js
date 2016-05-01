@@ -7,7 +7,7 @@ angular.module('utilsApp').controller('PostItCtrl', ["$scope", "$rootScope", "$h
     };
 
     $scope.loadPostits();
-}]).directive('contenteditable', function ($timeout, $http) {
+}]).directive('contenteditable', function ($http) {
     return {
         restrict: "A",
         scope: { ngModel: "=" },
@@ -38,4 +38,8 @@ angular.module('utilsApp').controller('PostItCtrl', ["$scope", "$rootScope", "$h
             });
         }
     };
+}).directive('addPostit', function($http) { 
+    return {
+        restrict: "A"
+    }
 });
