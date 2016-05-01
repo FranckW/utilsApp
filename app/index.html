@@ -43,8 +43,8 @@
                             <div class="quote-container">
                                 <i class="pin"></i>
                                 <blockquote class="note yellow">
-                                    <cite ng-model="postit.title" contenteditable></cite>
-                                    <div ng-model="postit.content" contenteditable></div>
+                                    <cite ng-model="postit" id="titleedit" contenteditable></cite>
+                                    <div ng-model="postit" id="contentedit" contenteditable></div>
                                 </blockquote>
                             </div>
                         </td>
@@ -65,7 +65,6 @@
     <script src="app.js"></script>
     <script src="components/scripts/controllers/postItCtrl.js"></script>
     <script src="components/scripts/controllers/navbarItemsToggle.js"></script>
-    <script src="components/scripts/js/editablePostIt.js"></script>
 </body>
 
 </html>
