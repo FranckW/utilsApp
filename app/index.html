@@ -37,13 +37,14 @@
 
         <div id="content">
             <div id="todoContent" ng-controller="PostItCtrl">
-                <a class="btn btn-primary addPostItBtn">Ajouter un post-it</a>
-                <table>
-                    <tr ng-repeat="postit in postits">
+                <a class="btn btn-primary" ng-click="addPostIt()">Ajouter un post-it</a>
+                <table> 
+                    <tr ng-repeat="postit in postits | orderBy:'-'">
                         <td>
                             <div class="quote-container">
                                 <i class="pin"></i>
                                 <blockquote class="note yellow">
+                                    <!--<a class="btn btn-primary" ng-click="removePostIt(postit.id)">Supprimer</a>-->
                                     <cite ng-model="postit" id="titleedit" contenteditable></cite>
                                     <div ng-model="postit" id="contentedit" contenteditable></div>
                                 </blockquote>
@@ -64,9 +65,10 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="app.js"></script>
+    <script src="components/scripts/services/postItServices.js"></script>
+    <script src="components/scripts/directives/postItDirectives.js"></script>
     <script src="components/scripts/controllers/postItCtrl.js"></script>
     <script src="components/scripts/js/navbarItemsToggle.js"></script>
-    <script src="components/scripts/js/callbackButtons.js"></script>
 </body>
 
 </html>
