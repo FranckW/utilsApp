@@ -1,5 +1,5 @@
 'use strict';
-angular.module('utilsApp').directive('contenteditable', function ($http, postItServices) {
+angular.module('utilsApp').directive('contenteditable', function ($http, $rootScope, postItServices) {
     return {
         restrict: "A",
         scope: { ngModel: "=" },
@@ -18,15 +18,22 @@ angular.module('utilsApp').directive('contenteditable', function ($http, postItS
                     .replace(/<[p|div]\s/ig, '\n$0')
                     .replace(/(<([^>]+)>)/ig, "");
                 if (attr.id === "titleedit") {
-                    postItServices.updatePostitTitle(scope.ngModel.id, editedText);
+                    var id = scope.ngModel.id;
+                    postItServices.updatePostItTitle(id, editedText).then(
+                        function (data) {
+                            $rootScope.postits = data.postits;
+                        });
                 }
                 else if (attr.id === "contentedit") {
-                    postItServices.updatePostitContent(scope.ngModel.id, editedText);
+                    var id = scope.ngModel.id;
+                    postItServices.updatePostItContent(id, editedText).then(
+                        function (data) {
+                            $rootScope.postits = data.postits;
+                        });
                 }
                 scope.$apply();
                 return element;
             });
-
         }
     };
 });
