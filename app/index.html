@@ -37,21 +37,19 @@
 
         <div id="content">
             <div id="todoContent" ng-controller="PostItCtrl">
-                <a class="btn btn-primary" ng-click="addPostIt()">Ajouter un post-it</a>
-                <table> 
-                    <tr ng-repeat="postit in postits | orderBy:'-'">
-                        <td>
-                            <div class="quote-container">
-                                <i class="pin"></i>
-                                <blockquote class="note yellow">
-                                    <!--<a class="btn btn-primary" ng-click="removePostIt(postit.id)">Supprimer</a>-->
-                                    <cite ng-model="postit" id="titleedit" contenteditable></cite>
-                                    <div ng-model="postit" id="contentedit" contenteditable></div>
-                                </blockquote>
+                <a class="btn btn-lg" ng-click="addPostIt()"><i class="glyphicon glyphicon-plus"></i></a>
+                <div ng-repeat="postit in postits | orderBy:'-'">
+                    <div class="quote-container">
+                        <i class="pin"></i>
+                        <blockquote class="note yellow">
+                            <div class="rmvCiteDiv">
+                                <cite ng-model="postit" id="titleedit" contenteditable></cite>
+                                <a class="btn removePostItBtn" ng-click="removePostIt(postit.id)"><i class="glyphicon glyphicon-remove"></i></a>
                             </div>
-                        </td>
-                    </tr>
-                </table>
+                            <div ng-model="postit" id="contentedit" contenteditable></div>
+                        </blockquote>
+                    </div>
+                </div>
             </div>
 
             <div id="clochetteContent" class="hidden">

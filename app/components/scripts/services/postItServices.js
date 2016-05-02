@@ -15,7 +15,7 @@ angular.module('utilsApp').service(
                 method: "get",
                 url: "http://localhost:8080/jeeServer/addEmptyPostIt"
             });
-            return (request.then(skip, skip));
+            return (request.then(handleSuccess, handleError));
         }
 
         function getPostIts() {
@@ -28,37 +28,37 @@ angular.module('utilsApp').service(
 
         function removePostIt(id) {
             var request = $http({
-                methomethod: "get",
+                method: "get",
                 url: "http://localhost:8080/jeeServer/removePostIt",
-                data: {
+                params: {
                     id: id
                 }
             });
-            return (request.then(skip, skip));
+            return (request.then(handleSuccess, handleError));
         }
         
         function updatePostItTitle(id, title) {
             var request = $http({
-                methomethod: "get",
+                method: "get",
                 url: "http://localhost:8080/jeeServer/updatePostItTitle",
-                data: {
+                params: {
                     id: id,
                     title: title
                 }
             });
-            return (request.then(skip, skip));
+            return (request.then(handleSuccess, handleError));
         }
         
         function updatePostItContent(id, content) {
             var request = $http({
-                methomethod: "get",
+                method: "get",
                 url: "http://localhost:8080/jeeServer/updatePostItContent",
-                data: {
+                params: {
                     id: id,
                     content: content
                 }
             });
-            return (request.then(skip, skip));
+            return (request.then(handleSuccess, handleError));
         }
 
         function handleError(response) {
@@ -72,9 +72,6 @@ angular.module('utilsApp').service(
 
         function handleSuccess(response) {
             return (response.data);
-        }
-
-        function skip(response) {
         }
     }
 );

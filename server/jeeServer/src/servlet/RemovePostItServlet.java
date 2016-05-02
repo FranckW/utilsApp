@@ -19,6 +19,7 @@ public class RemovePostItServlet extends GetPostHttpRequestServlet {
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate("DELETE FROM POSTIT WHERE id = " + id);
+			super.getPostIts();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {

@@ -5,19 +5,24 @@ angular.module('utilsApp').controller('PostItCtrl', function ($scope, $rootScope
     }
 
     $scope.loadPostits = function () {
-        postItServices.getPostIts()
-            .then(
+        postItServices.getPostIts().then(
             function (data) {
                 applyRemoteData(data);
             });
     };
 
     $scope.addPostIt = function () {
-        postItServices.addPostIt().then();
+        postItServices.addPostIt().then(
+            function (data) {
+                applyRemoteData(data);
+            });
     };
 
     $scope.removePostIt = function (id) {
-        postItServices.removePostIt(id).then();
+        postItServices.removePostIt(id).then(
+            function (data) {
+                applyRemoteData(data);
+            });
     };
 
     $scope.loadPostits();

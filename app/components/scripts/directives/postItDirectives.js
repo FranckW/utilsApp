@@ -4,6 +4,7 @@ angular.module('utilsApp').directive('contenteditable', function ($http, postItS
         restrict: "A",
         scope: { ngModel: "=" },
         link: function (scope, element, attr) {
+
             if (attr.id === "titleedit") {
                 element.html(scope.ngModel.title);
             }
@@ -16,14 +17,16 @@ angular.module('utilsApp').directive('contenteditable', function ($http, postItS
                     .replace(/<br(\s*)\/*>/ig, '\n')
                     .replace(/<[p|div]\s/ig, '\n$0')
                     .replace(/(<([^>]+)>)/ig, "");
-
-                if (attr.id === "titleedit")
-                    postItServices.updatePostitContent(scope.ngModel.id, editedText);
-                else if (attr.id === "contentedit")
+                if (attr.id === "titleedit") {
                     postItServices.updatePostitTitle(scope.ngModel.id, editedText);
+                }
+                else if (attr.id === "contentedit") {
+                    postItServices.updatePostitContent(scope.ngModel.id, editedText);
+                }
                 scope.$apply();
                 return element;
             });
+
         }
     };
 });

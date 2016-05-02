@@ -22,6 +22,7 @@ public class UpdatePostItServlet extends GetPostHttpRequestServlet {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate(
 					"UPDATE POSTIT SET title = \"" + title + "\", content = \"" + content + "\" WHERE id = " + id);
+			super.getPostIts();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {

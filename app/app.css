@@ -1,5 +1,6 @@
 /* app css stylesheet */
 
+
 body {
     margin: 10px;
 }
@@ -17,19 +18,38 @@ body {
 .note {
   color: #333;
   position: relative;
-  width: 300px;
   margin: 0 auto;
   padding: 20px;
-  font-family: Satisfy;
-  font-size: 30px;
+  font-size: 200%;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
 }
 
 .note cite {
-  display: block;
-  margin: 40px 0 0 0;
+  display: inline-block;
   text-align: center;
-  font-size: 40px;
+  font-size: 120%;
+}
+
+.rmvCiteDiv {
+  margin-bottom:10px;
+  background-image: linear-gradient(to right, #428bca 40%, rgba(0,0,0, 0) 0%);
+  background-position: bottom;
+  background-size: 30px 2px;
+  background-repeat: repeat-x;
+}
+
+.removePostItBtn {
+  position: absolute;
+  right: 0px;
+  color: red;
+}
+
+.glyphicon-remove {
+  font-size: 150%;
+}
+
+.glyphicon-plus {
+  font-size: 200%;
 }
 
 .yellow {
@@ -44,7 +64,7 @@ body {
 .pin {
   background-color: #aaa;
   display: block;
-  height: 32px;
+  height: 30px;
   width: 2px;
   position: absolute;
   left: 50%;

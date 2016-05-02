@@ -17,7 +17,8 @@ public class AddEmptyPostItServlet extends GetPostHttpRequestServlet {
 		super.doRequest(request, response);
 		try {
 			Statement stmt = connection.createStatement();
-			stmt.executeUpdate("INSERT INTO POSTIT (TITLE, CONTENT) VALUES (\"\",\"\")");
+			stmt.executeUpdate("INSERT INTO POSTIT (TITLE, CONTENT) VALUES (\"Titre\",\"Contenu\")");
+			super.getPostIts();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {

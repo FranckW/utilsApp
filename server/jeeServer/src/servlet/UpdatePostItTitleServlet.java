@@ -17,9 +17,11 @@ public class UpdatePostItTitleServlet extends GetPostHttpRequestServlet {
 		super.doRequest(request, response);
 		String id = request.getParameter("id");
 		String title = request.getParameter("title");
+		System.out.println("title : " + title + " id : " + id);
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate("UPDATE POSTIT SET title = \"" + title + "\" WHERE id = " + id);
+			super.getPostIts();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {

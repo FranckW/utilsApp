@@ -17,9 +17,11 @@ public class UpdatePostItContentServlet extends GetPostHttpRequestServlet {
 		super.doRequest(request, response);
 		String id = request.getParameter("id");
 		String content = request.getParameter("content");
+		System.out.println("content : " + content + " id : " + id);
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate("UPDATE POSTIT SET content = \"" + content + "\" WHERE id = " + id);
+			super.getPostIts();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {

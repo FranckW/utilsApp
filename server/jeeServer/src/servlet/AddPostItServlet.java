@@ -20,6 +20,7 @@ public class AddPostItServlet extends GetPostHttpRequestServlet {
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate("INSERT INTO POSTIT (TITLE, CONTENT) VALUES (\"" + title + "\",\"" + content + "\")");
+			super.getPostIts();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {
