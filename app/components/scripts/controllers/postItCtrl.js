@@ -1,5 +1,5 @@
 'use strict';
-angular.module('utilsApp').controller('PostItCtrl', function ($scope, $rootScope, $http, postItServices) {
+angular.module('utilsApp').controller('PostItCtrl', function ($scope, postItServices) {
     function applyRemoteData(data) {
         $scope.postits = data.postits;
     }
@@ -26,5 +26,4 @@ angular.module('utilsApp').controller('PostItCtrl', function ($scope, $rootScope
     };
 
     $scope.loadPostits();
-
 }); 

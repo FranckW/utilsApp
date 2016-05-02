@@ -52,8 +52,14 @@
                 </div>
             </div>
 
-            <div id="clochetteContent" class="hidden">
-                <h2>Clochette</h2>
+            <div id="clochetteContent" class="hidden" ng-controller="ClochetteCtrl">
+                <div ng-repeat="choice in choices">
+                    <button ng-click="removeChoice(choice)">Supprimer</button>
+                    <input type="text" ng-model="choice.value" placeholder="Entrer un choix">
+                </div>
+                <button ng-click="addChoice()">Ajouter un choix</button>
+                <button ng-click="pick()">Choisis pour moi stp !</button>
+                <div class="thumbnail">{{result}}</div>
             </div>
 
         </div>
@@ -66,6 +72,7 @@
     <script src="components/scripts/services/postItServices.js"></script>
     <script src="components/scripts/directives/postItDirectives.js"></script>
     <script src="components/scripts/controllers/postItCtrl.js"></script>
+    <script src="components/scripts/controllers/clochetteCtrl.js"></script>
     <script src="components/scripts/js/navbarItemsToggle.js"></script>
 </body>
 
