@@ -4,7 +4,6 @@ angular.module('utilsApp').directive('contenteditable', function ($http, $rootSc
         restrict: "A",
         scope: { ngModel: "=" },
         link: function (scope, element, attr) {
-
             if (attr.id === "titleedit") {
                 element.html(scope.ngModel.title);
             }

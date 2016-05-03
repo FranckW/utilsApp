@@ -1,0 +1,29 @@
+<div id="clochetteContent" ng-controller="ClochetteCtrl">
+    <div class="form-wrapper clochetteForm">
+        <label>Entrer des choix :</label>
+        <div ng-repeat="choice in choices">
+
+            <a class="btn removeBtn removeChoiceBtn" ng-click="removeChoice(choice)" data-toggle="tooltip" data-placement="top" title="Supprimer ce choix"><i class="glyphicon glyphicon-remove"></i></a>
+            <div class="input-w">
+                <input type="text" class="form-control" ng-model="choice.value" placeholder="Entrer un choix ...">
+            </div>
+        </div>
+        <a class="btn btn-lg" ng-click="addChoice()" data-toggle="tooltip" data-placement="top" title="Ajouter un choix"><i class="glyphicon glyphicon-plus"></i></a>
+        <button class="btn btn-primary" ng-click="pick()">Choisis pour moi stp !</button>
+        <hr>
+        <div class="thumbnail">{{result}}</div>
+    </div>
+    
+    <script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h3 class="modal-title">I'm a modal!</h3>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    
+    <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+</div>

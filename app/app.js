@@ -8,8 +8,7 @@ angular
             .when('/main', {
                 templateUrl: 'index.html',
                 controller: 'PostItCtrl'
-            })
-            .otherwise({
+            }).otherwise({
                 redirectTo: '/main'
             });
     });

@@ -19,6 +19,7 @@ body {
   color: #333;
   position: relative;
   margin: 0 auto;
+  width: 75%;
   padding: 20px;
   font-size: 200%;
   box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
@@ -44,12 +45,17 @@ body {
   color: red;
 }
 
+.removeBtn {
+  color: red;
+}
+
 .glyphicon-remove {
   font-size: 150%;
 }
 
 .glyphicon-plus {
   font-size: 200%;
+  color: green;
 }
 
 .yellow {
@@ -111,3 +117,31 @@ body {
   -ms-transform-origin: 50% 100%;
   -o-transform-origin: 50% 100%;
 }
+
+.clochetteForm {
+  padding: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background: rgba(175, 175, 175, 0.2);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+   }
+
+.nav-tabs > li > a {
+  color: white;
+}
+
+#clochetteContent {
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 75%;
+}
+
+.input-w {
+  overflow: hidden;
+  width:100%;
+}
+
+.removeChoiceBtn {
+  float: right;
+}
+
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

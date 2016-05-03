@@ -13,67 +13,24 @@
 </head>
 
 <body spellcheck=false>
-
     <div class="container">
-
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>                        
-                </button>
-                    <a class="navbar-brand" href="#">Utils App</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li id="todoNavBarLi" class="active"><a href="index.html" class="toggleTodo">To do</a></li>
-                        <li id="clochetteNavBarLi"><a href="index.html" class="toggleClochette">Clochette</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div id="content">
-            <div id="todoContent" ng-controller="PostItCtrl">
-                <a class="btn btn-lg" ng-click="addPostIt()"><i class="glyphicon glyphicon-plus"></i></a>
-                <div ng-repeat="postit in postits | orderBy:'-'">
-                    <div class="quote-container">
-                        <i class="pin"></i>
-                        <blockquote class="note yellow">
-                            <div class="rmvCiteDiv">
-                                <cite ng-model="postit" id="titleedit" contenteditable></cite>
-                                <a class="btn removePostItBtn" ng-click="removePostIt(postit.id)"><i class="glyphicon glyphicon-remove"></i></a>
-                            </div>
-                            <div ng-model="postit" id="contentedit" contenteditable></div>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
-
-            <div id="clochetteContent" class="hidden" ng-controller="ClochetteCtrl">
-                <div ng-repeat="choice in choices">
-                    <button ng-click="removeChoice(choice)">Supprimer</button>
-                    <input type="text" ng-model="choice.value" placeholder="Entrer un choix">
-                </div>
-                <button ng-click="addChoice()">Ajouter un choix</button>
-                <button ng-click="pick()">Choisis pour moi stp !</button>
-                <div class="thumbnail">{{result}}</div>
-            </div>
-
-        </div>
+        <div ng-include="'views/navbar.html'"></div>
     </div>
+    
+
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="app.js"></script>
+    <script src="components/scripts/ui/modal/modal.js"></script>
     <script src="components/scripts/services/postItServices.js"></script>
     <script src="components/scripts/directives/postItDirectives.js"></script>
     <script src="components/scripts/controllers/postItCtrl.js"></script>
     <script src="components/scripts/controllers/clochetteCtrl.js"></script>
-    <script src="components/scripts/js/navbarItemsToggle.js"></script>
+    <script src="components/scripts/controllers/clochetteModalCtrl.js"></script>
 </body>
 
 </html>
