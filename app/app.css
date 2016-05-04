@@ -60,11 +60,6 @@ body {
 
 .yellow {
   background: #eae672;
-  -webkit-transform: rotate(2deg);
-  -moz-transform: rotate(2deg);
-  -o-transform: rotate(2deg);
-  -ms-transform: rotate(2deg);
-  transform: rotate(2deg);
 }
 
 .pin {
@@ -135,12 +130,16 @@ body {
   width: 75%;
 }
 
-.input-w {
-  overflow: hidden;
+.choiceFormGroup {
   width:100%;
 }
 
+#choiceInput {
+  width:95%;
+}
+
 .removeChoiceBtn {
+  width:5%;
   float: right;
 }
 

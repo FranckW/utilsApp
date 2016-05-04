@@ -1,12 +1,12 @@
 <div id="todoContent" ng-controller="PostItCtrl">
-    <a class="btn btn-lg" ng-click="addPostIt()" data-toggle="tooltip" data-placement="top" title="Ajouter un post-it"><i class="glyphicon glyphicon-plus"></i></a>
+    <a class="btn btn-lg" ng-click="addPostIt()" tooltip-placement="right" uib-tooltip="Ajouter un post-it"><i class="glyphicon glyphicon-plus"></i></a>
     <div ng-repeat="postit in postits | orderBy:'-'">
         <div class="quote-container">
             <i class="pin"></i>
             <blockquote class="note yellow">
                 <div class="rmvCiteDiv">
                     <cite ng-model="postit" id="titleedit" contenteditable></cite>
-                    <a class="btn removePostItBtn" ng-click="removePostIt(postit.id)" data-toggle="tooltip" data-placement="top" title="Supprimer ce post-it"><i class="glyphicon glyphicon-remove"></i></a>
+                    <a class="btn removePostItBtn" ng-click="removePostIt(postit.id)" tooltip-placement="top" uib-tooltip="Supprimer ce post-it"><i class="glyphicon glyphicon-remove"></i></a>
                 </div>
                 <div ng-model="postit" id="contentedit" contenteditable></div>
             </blockquote>

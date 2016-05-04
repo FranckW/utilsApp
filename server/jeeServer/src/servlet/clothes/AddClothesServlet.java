@@ -1,4 +1,4 @@
-package servlet;
+package servlet.clothes;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -8,21 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "AddEmptyPostItServlet", urlPatterns = { "/addEmptyPostIt" })
-public class AddEmptyPostItServlet extends GetPostHttpRequestServlet {
-	private static final long serialVersionUID = 1447729599431979329L;
+import servlet.abstractServlet.GetPostHttpRequestServlet;
+
+@WebServlet(name = "AddClothesServlet", urlPatterns = { "/addClothes" })
+public class AddClothesServlet extends GetPostHttpRequestServlet {
+	private static final long serialVersionUID = 1999534269051022225L;
 
 	@Override
 	public void doRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		super.doRequest(request, response);
+		String path = request.getParameter("path");
 		try {
 			Statement stmt = connection.createStatement();
-			stmt.executeUpdate("INSERT INTO POSTIT (TITLE, CONTENT) VALUES (\"Titre\",\"Contenu\")");
-			super.getPostIts();
+			stmt.executeUpdate("INSERT INTO CLOTHES (PATH) VALUES (\"" + path + "\")");
+			super.getClothes();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {
-			out.write("Error while adding an empty post it to the database. " + e.getMessage());
+			out.write("Error while adding clothes to the database. " + e.getMessage());
 		}
 		out.flush();
 	}
