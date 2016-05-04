@@ -145,3 +145,23 @@ body {
 }
 
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.centerImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.clochetteImg {
+  width:50%;
+  height:50%;
+}
+
+.clochetteResult {
+  text-align: center;
+}
+
+.pickBtn {
+  display: block;
+    margin-left: auto;
+    margin-right: auto 
+}
