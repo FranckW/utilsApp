@@ -4,13 +4,12 @@
         <div ng-repeat="choice in choices">
             <form class="form-inline">
                 <div class="form-group choiceFormGroup">
-                    <label for="choiceInput" class="btn removeBtn removeChoiceBtn" ng-click="removeChoice(choice)" data-toggle="tooltip" data-placement="top"
-                        title="Supprimer ce choix"><i class="glyphicon glyphicon-remove"></i></label>
+                    <label for="choiceInput" class="btn removeBtn removeChoiceBtn" ng-click="removeChoice(choice)" tooltip-placement="right" uib-tooltip="Supprimer ce choix"><i class="glyphicon glyphicon-remove"></i></label>
                     <input id="choiceInput" type="text" class="form-control" ng-model="choice.value" placeholder="Entrer un choix ...">
                 </div>
             </form>
         </div>
-        <a class="btn btn-lg" ng-click="addChoice()" data-toggle="tooltip" data-placement="top" title="Ajouter un choix"><i class="glyphicon glyphicon-plus"></i></a>
+        <a class="btn btn-lg" ng-click="addChoice()" tooltip-placement="bottom" uib-tooltip="Ajouter un choix"><i class="glyphicon glyphicon-plus"></i></a>
 
 
         <script type="text/ng-template" id="myModalContent.html">
