@@ -1,5 +1,10 @@
 'use strict';
 angular.module('utilsApp').controller('PostItCtrl', function ($scope, postItServices) {
+      $scope.oneAtATime = true;
+    
+    
+    
+    
     function applyRemoteData(data) {
         $scope.postits = data.postits;
     }

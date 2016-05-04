@@ -1,5 +1,5 @@
 <div id="todoContent" ng-controller="PostItCtrl">
-    <a class="btn btn-lg" ng-click="addPostIt()" tooltip-placement="right" uib-tooltip="Ajouter un post-it"><i class="glyphicon glyphicon-plus"></i></a>
+    <!--<a class="btn btn-lg" ng-click="addPostIt()" tooltip-placement="right" uib-tooltip="Ajouter un post-it"><i class="glyphicon glyphicon-plus"></i></a>
     <div ng-repeat="postit in postits | orderBy:'-'">
         <div class="quote-container">
             <i class="pin"></i>
@@ -11,5 +11,29 @@
                 <div ng-model="postit" id="contentedit" contenteditable></div>
             </blockquote>
         </div>
+    </div>-->
+    <script type="text/ng-template" id="group-template.html">
+    <div class="panel {{panelClass || 'panel-default'}}">
+      <div class="panel-heading">
+        <h4 class="panel-title" style="color:#fa39c3">
+          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
+            ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+        </h4>
+      </div>
+      <div class="panel-collapse collapse" uib-collapse="!isOpen">
+        <div class="panel-body" style="text-align: right" ng-transclude></div>
+      </div>
     </div>
+  </script>
+    <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="oneAtATime">
+      Open only one at a time
+    </label>
+  </div>
+    <uib-accordion close-others="oneAtATime">
+        <uib-accordion-group heading="Dynamic Body Content">
+      <p>The body of the uib-accordion group grows to fit the contents</p>
+        </uib-accordion-group>
+    </uib-accordion>
 </div>
