@@ -1,5 +1,13 @@
 <div ng-controller="ClothesCtrl">
-    <label class="control-label">Select File</label>
-    <input id="input-1" type="file" class="file">
-
 </div>
+
+<input id="input-dim-1" name="inputdim1[]" type="file" multiple class="file-loading" accept="image/*">
+<script>
+    $("#input-dim-1").fileinput({
+    uploadUrl: "/file-upload-batch/2",
+    allowedFileExtensions: ["jpg", "png", "jpeg"],
+    minImageWidth: 50,
+    minImageHeight: 50
+});
+
+</script>
