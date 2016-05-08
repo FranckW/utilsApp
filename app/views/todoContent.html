@@ -1,39 +1,20 @@
 <div id="todoContent" ng-controller="PostItCtrl">
-    <!--<a class="btn btn-lg" ng-click="addPostIt()" tooltip-placement="right" uib-tooltip="Ajouter un post-it"><i class="glyphicon glyphicon-plus"></i></a>
-    <div ng-repeat="postit in postits | orderBy:'-'">
-        <div class="quote-container">
-            <i class="pin"></i>
-            <blockquote class="note yellow">
-                <div class="rmvCiteDiv">
-                    <cite ng-model="postit" id="titleedit" contenteditable></cite>
-                    <a class="btn removePostItBtn" ng-click="removePostIt(postit.id)" tooltip-placement="top" uib-tooltip="Supprimer ce post-it"><i class="glyphicon glyphicon-remove"></i></a>
-                </div>
-                <div ng-model="postit" id="contentedit" contenteditable></div>
-            </blockquote>
+  <i class="btn btn-lg glyphicon glyphicon-plus" ng-click="addPostIt()" tooltip-placement="right" uib-tooltip="Ajouter un post-it"></i>
+  <div ng-repeat="postit in postits | orderBy:'-'">
+    <div class="panel-group">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+             <i class="btn btn-xs removeBtn glyphicon glyphicon-remove" ng-click="removePostIt(postit.id)" tooltip-placement="top" uib-tooltip="Supprimer ce post-it"></i>
+             <a data-toggle="collapse" ng-click="toggleCollapse($index)" href="#collapsePostIt_{{ $index }}" ng-model="postit" id="titleedit" contenteditable></a>
+             <i class="pull-right glyphicon glyphicon-chevron-right" ng-click="toggleCollapse($index)" data-toggle="collapse" href="#collapsePostIt_{{ $index }}" id ="collapsePostItIcon_{{ $index }}"></i>
+      </h4>
         </div>
-    </div>-->
-    <script type="text/ng-template" id="group-template.html">
-    <div class="panel {{panelClass || 'panel-default'}}">
-      <div class="panel-heading">
-        <h4 class="panel-title" style="color:#fa39c3">
-          <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading"><span
-            ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
-        </h4>
-      </div>
-      <div class="panel-collapse collapse" uib-collapse="!isOpen">
-        <div class="panel-body" style="text-align: right" ng-transclude></div>
+        <div id="collapsePostIt_{{ $index }}" class="panel-collapse collapse">
+          <div ng-model="postit" id="contentedit" contenteditable></div>
+        </div>
       </div>
     </div>
-  </script>
-    <div class="checkbox">
-    <label>
-      <input type="checkbox" ng-model="oneAtATime">
-      Open only one at a time
-    </label>
   </div>
-    <uib-accordion close-others="oneAtATime">
-        <uib-accordion-group heading="Dynamic Body Content">
-      <p>The body of the uib-accordion group grows to fit the contents</p>
-        </uib-accordion-group>
-    </uib-accordion>
+</div>
 </div>
