@@ -1,0 +1,11 @@
+</br>
+
+<div ng-repeat="item in clothes | orderBy:'-'">
+    <div ng-class="row | ($index % 3 == 0)">
+        <div class="thumbnail col-sm-4">
+            <img class="clothesImg" src="img/clothes/{{ item.path }}" ng-click="clickClothesImg(item)"></img>
+            <i class="btn btn-xs removeBtn glyphicon glyphicon-remove" ng-click="removeClothes(item.id)" tooltip-placement="right" uib-tooltip="Supprimer ce vêtement"></i>
+        </div>
+    </div>
+</div>
+</ul>

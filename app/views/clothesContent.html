@@ -1,13 +1,56 @@
 <div ng-controller="ClothesCtrl">
+    <a class="btn btn-lg glyphicon glyphicon-plus addClothesBtn" href="#collapseAddClothes" data-toggle="collapse" tooltip-placement="right"
+        uib-tooltip="Ajouter un vêtement"></a>
+
+    <div id="collapseAddClothes" class="collapse">
+        <div class="thumbnail">
+            <form enctype="multipart/form-data" action="http://localhost:8080/jeeServer/addClothes" method="POST">
+                <input name="path" id="file" type="file" ng-model="fileToUpload" multiple></input>
+                <div id="prev"></div>
+                <input type="submit" value="Upload"></input>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+    function createThumbnail(file) {
+        var reader = new FileReader();
+        reader.addEventListener('load', function() {
+            var imgElement = document.createElement('img');
+            imgElement.style.maxWidth = '150px';
+            imgElement.style.maxHeight = '150px';
+            imgElement.src = this.result;
+            prev.appendChild(imgElement);
+            
+            var pElement = document.createElement('p');
+            var node = document.createTextNode(this.result);
+            pElement.id = "foo";
+            pElement.appendChild(node);
+            pElement.style.display = 'none';
+            prev.appendChild(pElement);
+        });
+        reader.readAsDataURL(file);
+    }
+
+    var allowedTypes = ['png', 'jpg', 'jpeg', 'gif'],
+        fileInput = document.querySelector('#file'),
+        prev = document.querySelector('#prev');
+    fileInput.addEventListener('change', function() {
+        var files = this.files,
+            filesLen = files.length,
+            imgType;
+        for (var i = 0; i < filesLen; i++) {
+            imgType = files[i].name.split('.');
+            imgType = imgType[imgType.length - 1];
+            if (allowedTypes.indexOf(imgType) != -1) {
+                createThumbnail(files[i]);
+            }
+        }
+    });
+})();
+    </script>
+
+    <div ng-include=" 'views/clothesDisplaying.html' "></div>
 </div>
-
-<input id="input-dim-1" name="inputdim1[]" type="file" multiple class="file-loading" accept="image/*">
-<script>
-    $("#input-dim-1").fileinput({
-    uploadUrl: "/file-upload-batch/2",
-    allowedFileExtensions: ["jpg", "png", "jpeg"],
-    minImageWidth: 50,
-    minImageHeight: 50
-});
-
-</script>
+</div>

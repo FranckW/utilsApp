@@ -21,7 +21,7 @@ public class RemoveClothesServlet extends GetPostHttpRequestServlet {
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate("DELETE FROM CLOTHES WHERE id = " + id);
-			super.getPostIts();
+			super.getClothes();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {

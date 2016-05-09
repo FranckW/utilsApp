@@ -39,6 +39,6 @@ angular.module('utilsApp').controller('PostItCtrl', function ($document, $scope,
             }
         }
     }
-
+    
     $scope.loadPostits();
-}); 
+});
