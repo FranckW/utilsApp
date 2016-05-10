@@ -119,7 +119,7 @@ public abstract class GetPostHttpRequestServlet extends HttpServlet {
 				ja.add(jo);
 			}
 			JSONObject mainObj = new JSONObject();
-			mainObj.put("clothes_tag", ja);
+			mainObj.put("clothesTag", ja);
 			out.write(mainObj.toJSONString());
 			resultSet.close();
 		} catch (SQLException e) {

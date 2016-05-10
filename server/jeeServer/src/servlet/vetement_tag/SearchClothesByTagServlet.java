@@ -14,7 +14,7 @@ import org.json.simple.JSONObject;
 
 import servlet.abstractServlet.GetPostHttpRequestServlet;
 
-@WebServlet(name = "SearchClothesByTagServlet", urlPatterns = { "/search" })
+@WebServlet(name = "SearchClothesByTagServlet", urlPatterns = { "/searchByTags" })
 public class SearchClothesByTagServlet extends GetPostHttpRequestServlet {
 	private static final long serialVersionUID = -7583655711925769178L;
 
@@ -46,7 +46,7 @@ public class SearchClothesByTagServlet extends GetPostHttpRequestServlet {
 					ja.add(jo);
 				}
 				JSONObject mainObj = new JSONObject();
-				mainObj.put("clothes", ja);
+				mainObj.put("clothesTag", ja);
 				out.write(mainObj.toJSONString());
 				resultSet.close();
 				stmt.close();

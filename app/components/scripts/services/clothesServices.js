@@ -28,12 +28,13 @@ angular.module('utilsApp').service(
             return (request.then(handleSuccess, handleError));
         }
 
-        function removeClothes(id) {
+        function removeClothes(id, path) {
             var request = $http({
                 method: "get",
                 url: "http://localhost:8080/jeeServer/removeClothes",
                 params: {
-                    id: id
+                    id: id,
+                    path: path
                 }
             });
             return (request.then(handleSuccess, handleError));

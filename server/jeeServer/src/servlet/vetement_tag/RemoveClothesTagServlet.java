@@ -17,10 +17,11 @@ public class RemoveClothesTagServlet extends GetPostHttpRequestServlet {
 	@Override
 	public void doRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		super.doRequest(request, response);
-		String id = request.getParameter("id");
+		String clothes_id = request.getParameter("clothes_id");
+		String tag_id = request.getParameter("tag_id");
 		try {
 			Statement stmt = connection.createStatement();
-			stmt.executeUpdate("DELETE FROM CLOTHES_TAG WHERE id = " + id);
+			stmt.executeUpdate("DELETE FROM CLOTHES_TAG WHERE clothes_id = " + clothes_id + " AND tag_id = " + tag_id);
 			super.getPostIts();
 			stmt.close();
 			connection.close();

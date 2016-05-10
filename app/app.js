@@ -1,7 +1,7 @@
 'use strict';
 angular
     .module('utilsApp', [
-        'ngRoute','ngAnimate', 'ui.bootstrap'
+        'ngRoute','ngAnimate', 'ui.bootstrap', 'isteven-multi-select'
     ])
     .config(function ($routeProvider) {
         $routeProvider

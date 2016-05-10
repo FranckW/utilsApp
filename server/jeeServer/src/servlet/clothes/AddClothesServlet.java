@@ -23,7 +23,6 @@ public class AddClothesServlet extends GetPostHttpRequestServlet {
 		super.doRequest(request, response);
 		MultipartRequest multi = new MultipartRequest(request,
 				"C:/Users/franc/Documents/NetBeansProjects/utilsApp/app/img/clothes");
-		out.println("Files:");
 		Enumeration files = multi.getFileNames();
 		Statement stmt = null;
 		while (files.hasMoreElements()) {
