@@ -53,7 +53,7 @@ body {
   float: right;
 }
 
-.nav, .pagination, .panel-title a, i { cursor: pointer; }
+.nav, .pagination, .panel-title a, i, .clothesImg { cursor: pointer; }
 
 .centerImg {
     display: block;
