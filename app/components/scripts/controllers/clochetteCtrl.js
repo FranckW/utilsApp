@@ -22,12 +22,11 @@ angular.module('utilsApp').controller('ClochetteCtrl', function ($scope, $uibMod
         $scope.open();
     };
 
-    $scope.open = function (size) {
+    $scope.open = function () {
         var modalInstance = $uibModal.open({
             animation: true,
             templateUrl: 'myModalContent.html',
             controller: 'ClochetteModalInstanceCtrl',
-            size: size,
             resolve: {
                 items: function () {
                     return true;

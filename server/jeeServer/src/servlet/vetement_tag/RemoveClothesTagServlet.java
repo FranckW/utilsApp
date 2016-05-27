@@ -22,7 +22,7 @@ public class RemoveClothesTagServlet extends GetPostHttpRequestServlet {
 		try {
 			Statement stmt = connection.createStatement();
 			stmt.executeUpdate("DELETE FROM CLOTHES_TAG WHERE clothes_id = " + clothes_id + " AND tag_id = " + tag_id);
-			super.getPostIts();
+			super.getClothesTags();
 			stmt.close();
 			connection.close();
 		} catch (SQLException e) {

@@ -97,7 +97,6 @@ public abstract class GetPostHttpRequestServlet extends HttpServlet {
 			}
 			JSONObject mainObj = new JSONObject();
 			mainObj.put("tags", ja);
-			System.out.println(mainObj.toJSONString());
 			out.write(mainObj.toJSONString());
 			resultSet.close();
 		} catch (SQLException e) {

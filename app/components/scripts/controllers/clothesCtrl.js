@@ -14,23 +14,14 @@ angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesSe
             });
     };
 
+    $scope.loadClothes();
+
     $scope.removeClothes = function (id, path) {
         clothesServices.removeClothes(id, path).then(
             function (data) {
                 updateClothes(data);
             });
     };
-
-    $scope.clickClothesImg = function (item) {
-        $scope.clickedClothesId = item.id;
-        $scope.open();
-    }
-
-    $scope.loadClothes();
-
-
-
-
 
     $scope.tags = []; /*[
     { id: 1, name: "Pull", selected: true  },
@@ -44,19 +35,25 @@ angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesSe
         //check si le vetement est dans le couple vetement tag pour chaque tag, ajouter selected: true si oui, false sinon
         clothesTagsServices.getClothesTagsByClothes($scope.clickedClothesId).then(
             function (dataTags) {
-                for (var j = 0; j < $scope.tags.length; j++) {
-                    for (var i = 0; i < dataTags.clothesTag.length; i++) {
-                        if (dataTags.clothesTag[i]['tag_id'] === $scope.tags[j].id) {
-                            $scope.tags[j].selected = true;
-                            //tmpjson = { id: $scope.tags[j].id, name: $scope.tags[j].name, selected: true };  
-                        }
-                        else {
-                            $scope.tags[j].selected = false;
+                if (dataTags.clothesTag) {
+                    for (var j = 0; j < $scope.tags.length; j++) {
+                        $scope.tags[j].selected = false;
+                        for (var i = 0; i < dataTags.clothesTag.length; i++) {
+                            if (dataTags.clothesTag[i]['id'] === $scope.tags[j].id) {
+                                $scope.tags[j].selected = true;
+                                break;
+                            }
                         }
                     }
                 }
             });
     };
+
+    $scope.clickClothesImg = function (item) {
+        $scope.clickedClothesId = item.id;
+        updateTagsSelected();
+        $scope.open();
+    }
 
     $scope.loadTags = function () {
         tagsServices.getTags().then(
@@ -67,47 +64,48 @@ angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesSe
                     dataJson.selected = false;
                     $scope.tags.push(dataJson);
                 }
-                updateTagsSelected();
+                $scope.tags.sort(function (a, b) {
+                    return a.name.localeCompare(b.name);
+                });
             });
     };
- 
+
     $scope.createTag = function (name) {
         if (name) {
-            //chercher dans la liste, ne pas ajouter si déjà présent
             tagsServices.addTag(name).then(
                 function (data) {
-                    $scope.tags.push(data.tags[data.tags.length - 1]);
+                    $scope.loadTags();
+                    updateTagsSelected();
                 });
-        };
+        }
+    };
 
-        $scope.tagClicked = function (data) {
-            if (data.selected) {
-                clothesTagsServices.addClothesTag($scope.clickedClothesId, data.id).then(
-                    function (responsedata) {
-                        console.log("add");
-                    });
-            } else {
-                clothesTagsServices.removeClothesTag($scope.clickedClothesId, data.id).then(
-                    function (responsedata) {
-                        console.log("remove");
-                    });
-            }
-        };
+    $scope.tagClicked = function (data) {
+        if (data.selected) {
+            clothesTagsServices.addClothesTag($scope.clickedClothesId, data.id).then(
+                function (responsedata) {
+                });
+        } else {
+            clothesTagsServices.removeClothesTag($scope.clickedClothesId, data.id).then(
+                function (responsedata) {
+                });
+        }
+    };
 
-        $scope.loadTags();
+    $scope.loadTags();
 
-        $scope.open = function () {
-            var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: 'myClothesModalContent.html',
-                controller: 'ClochetteModalInstanceCtrl',
-                resolve: {
-                    items: function () {
-                        return true;
-                    }
-                },
-                scope: $scope
-            });
-            modalInstance.result.then();
-        };
-    });
+    $scope.open = function () {
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: 'myClothesModalContent.html',
+            controller: 'ClochetteModalInstanceCtrl',
+            resolve: {
+                items: function () {
+                    return true;
+                }
+            },
+            scope: $scope
+        });
+        modalInstance.result.then();
+    };
+});

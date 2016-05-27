@@ -12,7 +12,7 @@
                         <input class="form-control" type="text" name="newTag" ng-model="newTag" placeholder="Nouveau tag" />
                         <input class="form-control btn btn-primary" type="submit" ng-click="createTag(newTag)" value="Créer tag" />
                     </form>
-                    <div isteven-multi-select input-model="tags" output-model="outputDropdown" button-label="name" item-label="name" max-labels="0"
+                    <div isteven-multi-select input-model="tags" output-model="tagsOutput" button-label="name" item-label="name" max-labels="3"
                         tick-property="selected" on-item-click="tagClicked(data)">
                     </div>
                 </div>
