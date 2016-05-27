@@ -18,7 +18,8 @@
     <div id="collapseSearchClothes" class="collapse">
         <div class="thumbnail">
             <div class="form-wrapper">
-                <label>Entrer des tags :</label>
+                <a class="btn" ng-click="addChoice()" tooltip-placement="bottom" uib-tooltip="Ajouter un choix"><i class="glyphicon glyphicon-plus"></i></a>
+                <label>Recherche par tags :</label>
                 <div ng-controller="SearchTagCtrl">
                     <div ng-repeat="searchTag in searchTags">
                         <form class="form-inline">
@@ -28,7 +29,6 @@
                             </div>
                         </form>
                     </div>
-                    <a class="btn btn-lg" ng-click="addChoice()" tooltip-placement="bottom" uib-tooltip="Ajouter un choix"><i class="glyphicon glyphicon-plus"></i></a>
                 </div>
             </div>
         </div>
