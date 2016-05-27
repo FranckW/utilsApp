@@ -6,7 +6,20 @@
         <div class="col-sm-12">
             <i class="btn btn-xs removeBtn glyphicon glyphicon-remove" ng-click="removeClothes(item.id, item.path)" tooltip-placement="right"
                 uib-tooltip="Supprimer ce vêtement"></i>
-            <div ng-include="'views/detailsClothes.html'"></div>
+            <script type="text/ng-template" id="myClothesModalContent.html">
+                <div class="modal-body">
+                    <form novalidate>
+                        <input class="form-control" type="text" name="newTag" ng-model="newTag" placeholder="Nouveau tag" />
+                        <input class="form-control btn btn-primary" type="submit" ng-click="createTag(newTag)" value="Créer tag" />
+                    </form>
+                    <div isteven-multi-select input-model="tags" output-model="outputDropdown" button-label="name" item-label="name" max-labels="0"
+                        tick-property="selected" on-item-click="tagClicked(data)">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="button" ng-click="close()">OK</button>
+                </div>
+            </script>
         </div>
     </div>
 </div>
