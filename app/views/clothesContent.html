@@ -2,6 +2,9 @@
     <a class="btn btn-lg glyphicon glyphicon-plus addClothesBtn" href="#collapseAddClothes" data-toggle="collapse" tooltip-placement="right"
         uib-tooltip="Ajouter un vêtement"></a>
 
+    <a class="btn btn-lg glyphicon glyphicon-plus" href="#collapseSearchClothes" data-toggle="collapse" tooltip-placement="right"
+        uib-tooltip="Rechercher des vêtements"></a>
+
     <div id="collapseAddClothes" class="collapse">
         <div class="thumbnail">
             <form enctype="multipart/form-data" action="http://localhost:8080/jeeServer/addClothes" method="POST">
@@ -9,6 +12,25 @@
                 <div id="prev"></div>
                 <input type="submit" value="Upload"></input>
             </form>
+        </div>
+    </div>
+
+    <div id="collapseSearchClothes" class="collapse">
+        <div class="thumbnail">
+            <div class="form-wrapper">
+                <label>Entrer des tags :</label>
+                <div ng-controller="SearchTagCtrl">
+                    <div ng-repeat="searchTag in searchTags">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="tagInput" class="btn removeBtn removeChoiceBtn" ng-click="removeTagInput(tagInput)" tooltip-placement="right" uib-tooltip="Supprimer ce tag"><i class="glyphicon glyphicon-remove"></i></label>
+                                <input id="tagInput" type="text" class="form-control" ng-model="searchTag.value" placeholder="Entrer un tag ...">
+                            </div>
+                        </form>
+                    </div>
+                    <a class="btn btn-lg" ng-click="addChoice()" tooltip-placement="bottom" uib-tooltip="Ajouter un choix"><i class="glyphicon glyphicon-plus"></i></a>
+                </div>
+            </div>
         </div>
     </div>
 
