@@ -1,6 +1,6 @@
 'use strict';
 angular.module('utilsApp').controller('SearchTagCtrl', function ($scope) {
-    $scope.searchTags = [{ id: "1", value: "" }, { id: "2", value: "" }, { id: "3", value: "" }];
+    $scope.searchTags = [{ id: "1", value: "" }, { id: "2", value: "" }];
 
     $scope.addChoice = function () {
         var index = $scope.searchTags.length + 1;
@@ -8,8 +8,8 @@ angular.module('utilsApp').controller('SearchTagCtrl', function ($scope) {
         $scope.searchTags.push(dataObj);
     };
 
-    $scope.removeChoice = function (choice) {
-        $scope.choices.pop(choice);
+    $scope.removeTagInput = function (tagInput) {
+        $scope.searchTags.pop(tagInput);
     };
 
     $scope.pick = function () {
