@@ -46,7 +46,7 @@ public class SearchClothesByTagServlet extends GetPostHttpRequestServlet {
 					ja.add(jo);
 				}
 				JSONObject mainObj = new JSONObject();
-				mainObj.put("clothesTag", ja);
+				mainObj.put("clothes", ja);
 				out.write(mainObj.toJSONString());
 				resultSet.close();
 				stmt.close();

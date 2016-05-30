@@ -2,14 +2,17 @@
 angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesServices, clothesTagsServices, tagsServices, $uibModal) {
     $scope.clothes = {};
     $scope.clickedClothesId = 0;
+    $scope.loading = true;
 
     function updateClothes(data) {
         $scope.clothes = data.clothes;
     };
 
     $scope.loadClothes = function () {
+        $scope.loading = true;
         clothesServices.getClothes().then(
             function (data) {
+                $scope.loading = false;
                 updateClothes(data);
             });
     };
@@ -17,35 +20,33 @@ angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesSe
     $scope.loadClothes();
 
     $scope.removeClothes = function (id, path) {
-        clothesServices.removeClothes(id, path).then(
-            function (data) {
-                updateClothes(data);
-            });
+        var result = confirm("Tu veux vraiment supprimer ça ?");
+        if (result) {
+            clothesServices.removeClothes(id, path).then(
+                function (data) {
+                    updateClothes(data);
+                });
+        }
     };
 
-    $scope.tags = []; /*[
-    { id: 1, name: "Pull", selected: true  },
-    { id: 2, name: "Echarpe", selected: false },
-    { id: 3, name: "T-shirt", selected: true  },
-    { id: 4, name: "Jupe", selected: false },
-    { id: 5, name: "Pantalon", selected: true  }
-]; */
+
+    //Tags part
+
+    $scope.tags = [];
 
     function updateTagsSelected() {
         //check si le vetement est dans le couple vetement tag pour chaque tag, ajouter selected: true si oui, false sinon
         clothesTagsServices.getClothesTagsByClothes($scope.clickedClothesId).then(
             function (dataTags) {
-                if (dataTags.clothesTag) {
+                if (dataTags.clothesTag)
                     for (var j = 0; j < $scope.tags.length; j++) {
                         $scope.tags[j].selected = false;
-                        for (var i = 0; i < dataTags.clothesTag.length; i++) {
+                        for (var i = 0; i < dataTags.clothesTag.length; i++)
                             if (dataTags.clothesTag[i]['id'] === $scope.tags[j].id) {
                                 $scope.tags[j].selected = true;
                                 break;
                             }
-                        }
                     }
-                }
             });
     };
 
@@ -71,6 +72,9 @@ angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesSe
     };
 
     $scope.createTag = function (name) {
+        for (var i = 0; i < data.tags.length; i++)
+            if (data.tags[i].name === name)
+                yolo
         if (name) {
             tagsServices.addTag(name).then(
                 function (data) {
@@ -108,4 +112,39 @@ angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesSe
         });
         modalInstance.result.then();
     };
+
+    //Search part
+
+    $scope.currentSearchTagIds = [];
+    $scope.checkedTagsOutput = [];
+    $scope.searchTags = [{ name: "cochez les tags" }];
+
+    $scope.searchSelectOpen = function () {
+        $scope.loadClothes();
+        $scope.searchTags = $scope.tags;
+    }
+
+    $scope.searchTagClicked = function (data) {
+        $scope.loading = true;
+        if (data.selected === true) {
+            //ajout d'un critère
+            $scope.currentSearchTagIds.push(data.id);
+            console.log($scope.currentSearchTagIds);
+        }
+        else {
+            //retrait d'un critère
+            $scope.currentSearchTagIds.pop(data.id);
+            console.log($scope.currentSearchTagIds);
+        }
+        if ($scope.currentSearchTagIds.length > 0) {
+            clothesTagsServices.getClothesTagsByTags($scope.currentSearchTagIds).then(
+                function (data) {
+                    $scope.loading = false;
+                    updateClothes(data);
+                });
+        }
+        else {
+            $scope.loadClothes();
+        }
+    }
 });

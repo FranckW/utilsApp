@@ -31,7 +31,7 @@ angular.module('utilsApp').service(
             });
             return (request.then(handleSuccess, handleError));
         }
-        
+
         function getClothesTagsByClothes(clothes_id) {
             var request = $http({
                 method: "get",

@@ -1,35 +1,28 @@
 <div ng-controller="ClothesCtrl">
-    <a class="btn btn-lg glyphicon glyphicon-plus addClothesBtn" href="#collapseAddClothes" data-toggle="collapse" tooltip-placement="right"
+    <a class="btn btn-lg glyphicon glyphicon-plus addBtn" href="#collapseAddClothes" data-toggle="collapse" tooltip-placement="right"
         uib-tooltip="Ajouter un vêtement"></a>
 
-    <a class="btn btn-lg glyphicon glyphicon-search addClothesBtn" href="#collapseSearchClothes" data-toggle="collapse" tooltip-placement="right"
+    <a class="btn btn-lg glyphicon glyphicon-search addBtn" href="#collapseSearchClothes" data-toggle="collapse" tooltip-placement="right"
         uib-tooltip="Rechercher des vêtements"></a>
 
     <div id="collapseAddClothes" class="collapse">
-        <div class="thumbnail">
+        <div class="thumbnail clothesThumbnail">
             <form enctype="multipart/form-data" action="http://localhost:8080/jeeServer/addClothes" method="POST">
-                <input name="path" id="file" type="file" ng-model="fileToUpload" multiple></input>
-                <div id="prev"></div>
-                <input type="submit" value="Upload"></input>
+                <label for="file"> <span class="btn btn-primary"><i class="glyphicon glyphicon-folder-open"></i> Choisir une image</span></label>
+                <input style="visibility: hidden; position: absolute;" id="file" class="form-control" type="file" name="path" ng-model="fileToUpload">
+                <div id="prev" style="margin-bottom: 5px;"></div>
+                <button type="submit" class="btn btn-primary" tooltip-placement="right" uib-tooltip="Valider l'upload">
+                     <i class="glyphicon glyphicon-upload"></i> Upload
+                </button>
             </form>
         </div>
     </div>
 
     <div id="collapseSearchClothes" class="collapse">
-        <div class="thumbnail">
-            <div class="form-wrapper">
-                <a class="btn" ng-click="addChoice()" tooltip-placement="bottom" uib-tooltip="Ajouter un choix"><i class="glyphicon glyphicon-plus"></i></a>
-                <label>Recherche par tags :</label>
-                <div ng-controller="SearchTagCtrl">
-                    <div ng-repeat="searchTag in searchTags">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <label for="tagInput" class="btn removeBtn removeChoiceBtn" ng-click="removeTagInput(tagInput)" tooltip-placement="right" uib-tooltip="Supprimer ce tag"><i class="glyphicon glyphicon-remove"></i></label>
-                                <input id="tagInput" type="text" class="form-control" ng-model="searchTag.value" placeholder="Entrer un tag ...">
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        <div class="thumbnail clothesThumbnail">
+            <label>Recherche par tags :</label>
+            <div isteven-multi-select on-open="searchSelectOpen()" input-model="searchTags" output-model="checkedTagsOutput" button-label="name"
+                item-label="name" max-labels="3" tick-property="selected" on-item-click="searchTagClicked(data)">
             </div>
         </div>
     </div>

@@ -75,11 +75,19 @@ body {
     margin-right: auto 
 }
 
-.addClothesBtn {
+.addBtn {
   background: lightgrey;
+}
+
+#addBtnTodo {
+  margin-bottom: 20px;
 }
 
 .clothesImg {
   max-width: 180px; 
   max-height: 180px;
+}
+
+.clothesThumbnail {
+  text-align: center;
 }

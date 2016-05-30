@@ -19,10 +19,13 @@ angular.module('utilsApp').controller('PostItCtrl', function ($document, $scope,
     };
 
     $scope.removePostIt = function (id) {
-        postItServices.removePostIt(id).then(
-            function (data) {
-                applyRemoteData(data);
-            });
+        var result = confirm("Tu veux vraiment supprimer ça ?");
+        if (result) {
+            postItServices.removePostIt(id).then(
+                function (data) {
+                    applyRemoteData(data);
+                });
+        }
     };
 
     $scope.toggleCollapse = function (id) {
@@ -39,6 +42,6 @@ angular.module('utilsApp').controller('PostItCtrl', function ($document, $scope,
             }
         }
     }
-    
+
     $scope.loadPostits();
 });
