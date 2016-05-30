@@ -5,7 +5,7 @@ body {
     margin: 10px;
 }
 
-#content{
+#content {
     width: 50%;
     margin: 0 auto; 
 }
@@ -90,4 +90,14 @@ body {
 
 .clothesThumbnail {
   text-align: center;
+}
+
+#contentedit {
+  margin: 5px;
+  font-size: 150%;
+}
+
+#titleedit {
+  font-size: 150%;
+  font-weight: bold;
 }

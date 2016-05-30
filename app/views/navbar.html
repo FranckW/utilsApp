@@ -1,19 +1,19 @@
 <div class="tabbable">
     <ul class="nav navbar-inverse nav-tabs">
-        <a class="navbar-brand" href="#">Utils App</a>
-        <li id="clochetteNavBarLi"><a href="#tabclochette" data-toggle="tab">Clochette</a></li>
+        <a class="navbar-brand" href="#" >Utils App</a>
+        <li id="clochetteNavBarLi" class="active"><a href="#tabclochette" data-toggle="tab">Clochette</a></li>
         <li id="todoNavBarLi"><a href="#tabtodo" data-toggle="tab">To do</a></li>
-        <li id="clothesNavBarLi" class="active"><a href="#tabclothes" data-toggle="tab">Vêtements</a></li>
+        <li id="clothesNavBarLi"><a href="#tabclothes" data-toggle="tab">Vêtements</a></li>
     </ul>
 </div>
 <div class="tab-content content">
-    <div class="tab-pane" id="tabclochette">
+    <div class="tab-pane active" id="tabclochette">
         <div ng-include="'views/clochetteContent.html'"></div>
     </div>
     <div class="tab-pane" id="tabtodo">
         <div ng-include="'views/todoContent.html'"></div>
     </div>
-    <div class="tab-pane active" id="tabclothes">
+    <div class="tab-pane" id="tabclothes">
         <div ng-include="'views/clothesContent.html'"></div>
     </div>
 </div>

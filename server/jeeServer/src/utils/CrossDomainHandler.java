@@ -28,6 +28,7 @@ public class CrossDomainHandler {
 			response.setHeader("Access-Control-Allow-Origin", clientOrigin);
 			response.setHeader("Access-Control-Allow-Methods", "GET POST OPTIONS");
 			response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+			response.setHeader("Access-Control-Allow-Credentials", "true");
 			response.setHeader("Access-Control-Max-Age", "86400");
 		}
 	}

@@ -4,11 +4,11 @@
     <div class="panel-group">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4 class="panel-title">
-             <i class="btn btn-xs removeBtn glyphicon glyphicon-remove" ng-click="removePostIt(postit.id)" tooltip-placement="top" uib-tooltip="Supprimer ce post-it"></i>
+          <div class="panel-title">
+             <i class="btn btn-lg removeBtn glyphicon glyphicon-remove" ng-click="removePostIt(postit.id)" tooltip-placement="top" uib-tooltip="Supprimer ce post-it"></i>
              <a data-toggle="collapse" ng-click="toggleCollapse($index)" href="#collapsePostIt_{{ $index }}" ng-model="postit" id="titleedit" contenteditable></a>
              <i class="pull-right glyphicon glyphicon-chevron-right" ng-click="toggleCollapse($index)" data-toggle="collapse" href="#collapsePostIt_{{ $index }}" id ="collapsePostItIcon_{{ $index }}"></i>
-      </h4>
+      </div>
         </div>
         <div id="collapsePostIt_{{ $index }}" class="panel-collapse collapse">
           <div ng-model="postit" id="contentedit" contenteditable></div>
