@@ -6,8 +6,11 @@ angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/main', {
-                templateUrl: 'index.html',
+                templateUrl: '/index.html',
                 controller: 'ClochetteCtrl'
+            }).when('/login', {
+                templateUrl: '/views/login.html',
+                controller: 'LoginCtrl'
             }).otherwise({
                 redirectTo: '/main'
             });
