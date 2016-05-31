@@ -72,16 +72,20 @@ angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesSe
     };
 
     $scope.createTag = function (name) {
-        for (var i = 0; i < data.tags.length; i++)
-            if (data.tags[i].name === name)
-                yolo
-        if (name) {
-            tagsServices.addTag(name).then(
-                function (data) {
-                    $scope.loadTags();
-                    updateTagsSelected();
-                });
-        }
+        var alreadyCreated = false;
+        for (var i = 0; i < $scope.tags.length; i++)
+            if ($scope.tags[i].name === name) {
+                alert("Ce tag existe déjà !")
+                alreadyCreated = true;
+            }
+        if (!alreadyCreated)
+            if (name) {
+                tagsServices.addTag(name).then(
+                    function (data) {
+                        $scope.loadTags();
+                        updateTagsSelected();
+                    });
+            }
     };
 
     $scope.tagClicked = function (data) {
@@ -129,12 +133,10 @@ angular.module('utilsApp').controller('ClothesCtrl', function ($scope, clothesSe
         if (data.selected === true) {
             //ajout d'un critère
             $scope.currentSearchTagIds.push(data.id);
-            console.log($scope.currentSearchTagIds);
         }
         else {
             //retrait d'un critère
             $scope.currentSearchTagIds.pop(data.id);
-            console.log($scope.currentSearchTagIds);
         }
         if ($scope.currentSearchTagIds.length > 0) {
             clothesTagsServices.getClothesTagsByTags($scope.currentSearchTagIds).then(

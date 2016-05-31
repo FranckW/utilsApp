@@ -1,4 +1,4 @@
-<div id="todoContent" ng-controller="PostItCtrl">
+<div id="todoContent" ng-controller="PostItCtrl" class="thumbnail tabContent">
   <a class="btn btn-lg glyphicon glyphicon-plus addBtn" id="addBtnTodo" ng-click="addPostIt()" tooltip-placement="right" uib-tooltip="Ajouter un post-it"></a>
   <div ng-repeat="postit in postits | orderBy:'-'">
     <div class="panel-group">
