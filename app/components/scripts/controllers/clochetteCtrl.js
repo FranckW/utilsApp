@@ -17,7 +17,7 @@ angular.module('utilsApp').controller('ClochetteCtrl', function ($scope, $uibMod
         var randomIndex = 1 + Math.floor(Math.random() * $scope.choices.length);
         $scope.result = $scope.choices[randomIndex - 1].value;
         if (!$scope.result) {
-            $scope.result = "Entre des choix !";
+            $scope.result = "Champ vide ...";
         }
         $scope.open();
     };

@@ -4,7 +4,7 @@
         <div ng-repeat="choice in choices">
             <form class="form-inline">
                 <div class="form-group choiceFormGroup">
-                    <label for="choiceInput" class="btn removeBtn removeChoiceBtn" ng-click="removeChoice(choice)" tooltip-placement="right" uib-tooltip="Supprimer ce choix"><i class="glyphicon glyphicon-remove"></i></label>
+                    <label for="choiceInput" class="removeBtn removeChoiceBtn" ng-click="removeChoice(choice)" tooltip-placement="right" uib-tooltip="Supprimer ce choix"><i class="glyphicon glyphicon-remove"></i></label>
                     <input id="choiceInput" type="text" class="form-control" ng-model="choice.value" placeholder="Entrer un choix ...">
                 </div>
             </form>
